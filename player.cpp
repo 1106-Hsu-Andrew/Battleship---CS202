@@ -21,16 +21,6 @@ Player::Player(const Player& rhs){
     }
 }
 
-Player& Player::operator=(const Player& rhs){
-    name = rhs.name;
-    numShips = rhs.numShips;
-    for(int i = 0; i < numShips; i++){
-        ships[i] = rhs.ships[i];
-    }
-    return *this;
-
-}
-
 ostream& operator<<(ostream& o , Player& rhs){
     o << rhs.name << endl;
     return o;

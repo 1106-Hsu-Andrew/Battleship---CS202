@@ -13,7 +13,6 @@ class Player{
         Player(string, Ship*, int);
         Player(const Player&);
 
-        Player& operator=(const Player&);
         friend ostream& operator<<(ostream&, Player&);
 
         string getName();

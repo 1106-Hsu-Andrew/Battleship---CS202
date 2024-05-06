@@ -8,7 +8,7 @@ class Ship{
         Coordinate start;
         Coordinate end;
 
-        virtual string getType() = 0;        
+        virtual void getType() = 0;        
     public:
         int getHits();
         Coordinate getStart();
