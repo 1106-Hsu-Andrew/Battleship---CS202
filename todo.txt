@@ -1,0 +1,22 @@
+TO DO LIST
+
+05/06/2024
+1. everything (classes)
+    - i think all of the classes are made incorrectly,
+    so we need to fix that. we need to especially check
+    the inherited classes and any classes that use arrays
+
+    - i especially don't like game, board, and coordinate.
+    i don't know if we need to have the coordinate class,
+    but we can keep it if need be
+
+2. come up with helper functions
+3. code main.cpp
+
+05/08/2024
+1. try to figure out which class should be the abstract
+base class and which function should be a template function
+
+2. come up with the needed helper functions and code them.
+
+3. write main.cpp

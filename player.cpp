@@ -1,48 +1,77 @@
 #include "player.h"
 Player::Player(){
     name = "NA";
-    numShips = -1;
-
+    // numShips = -1;
+    // maxShips = 5;
+    // sizeCols = -1;
+    // maxSizeCols = 10;
+    // sizeRows = -1;
+    // maxSizeRows = 10;
+    // board = new Board[maxSizeCols * maxSizeRows];
+    // ships = new Ship[maxShips];
 }
 
-Player::Player(string n , Ship* s , int nS){
+Player::Player(string n){
     name = n;
-    numShips = nS;
-    for(int i = 0; i < numShips; i++){
-        ships[i] = s[i];
-    }
 }
 
 Player::Player(const Player& rhs){
     name = rhs.name;
-    numShips = rhs.numShips;
-    for(int i = 0; i < numShips; i++){
-        ships[i] = rhs.ships[i];
-    }
 }
 
-ostream& operator<<(ostream& o , Player& rhs){
-    o << rhs.name << endl;
+Player::~Player(){
+    delete[] ships;
+}
+
+Player& Player::operator=(const Player& rhs){
+    name = rhs.name;
+    return *this;
+}
+
+ostream& operator<<(ostream& o , const Player& rhs){
+    o << rhs.name<< endl;
     return o;
 }
 
-string Player::getName(){
+string Player::getName() const{
     return name;
 }
 
-
-Ship* Player::getShip(){
-     return ships;
+Ship* Player::getShips() const{
+    return ships;
 }
 
-int Player::getNumShips(){
-     return numShips;
-}
+// int Player::getNumShips() const{
 
-void Player::setName(string n){
+// }
+
+// int Player::getMaxShips() const{
+
+// }
+
+// int Player::getSizeCols() const{
+
+// }
+
+// int Player::getMaxSizeCols() const{
+
+// }
+// int Player::getSizeRows() const{
+
+// }
+
+// int Player::getMaxSizeRows() const{
+
+// }
+
+void Player::setName(const string n ){
     name = n;
 }
 
-void Player::setNumShips(int nS){
-    numShips = nS;
-}
+// void Player::addShips(const Ship){
+
+// }
+
+// void Player::removeShips(const Ship){
+
+// }
