@@ -58,11 +58,11 @@ char* Board::getGrid(){
     return grid;
 }
 
-void Board::addGrid(){
+void Board::addGrid(Ship){
 
 }
 
-void Board::removeGrid(){
+void Board::removeGrid(Coordinate){
 
 }
 

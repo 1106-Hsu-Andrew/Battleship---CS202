@@ -1,6 +1,7 @@
 #include "player.h"
 Player::Player(){
     name = "NA";
+    numShips = -1;
     // numShips = -1;
     // maxShips = 5;
     // sizeCols = -1;
@@ -11,12 +12,14 @@ Player::Player(){
     // ships = new Ship[maxShips];
 }
 
-Player::Player(string n){
+Player::Player(string n, int nS){
     name = n;
+    numShips = nS;
 }
 
 Player::Player(const Player& rhs){
     name = rhs.name;
+    numShips = rhs.numShips;
 }
 
 Player::~Player(){
@@ -25,6 +28,7 @@ Player::~Player(){
 
 Player& Player::operator=(const Player& rhs){
     name = rhs.name;
+    numShips = rhs.numShips;
     return *this;
 }
 
@@ -41,37 +45,14 @@ Ship* Player::getShips() const{
     return ships;
 }
 
-// int Player::getNumShips() const{
-
-// }
-
-// int Player::getMaxShips() const{
-
-// }
-
-// int Player::getSizeCols() const{
-
-// }
-
-// int Player::getMaxSizeCols() const{
-
-// }
-// int Player::getSizeRows() const{
-
-// }
-
-// int Player::getMaxSizeRows() const{
-
-// }
+int Player::getNumShips() const{
+    return numShips;
+}
 
 void Player::setName(const string n ){
     name = n;
 }
 
-// void Player::addShips(const Ship){
-
-// }
-
-// void Player::removeShips(const Ship){
-
-// }
+void Player::setNumShips(const int nS){
+    numShips = nS;
+}
