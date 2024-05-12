@@ -1,27 +1,28 @@
-
-#ifndef BOARD_H 
+#ifndef BOARD_H
 #define BOARD_H
-#include <iostream>
-using namespace std;
+#include "ship.h"
 
 class Board{
     private:
+        int numRows, numCols, numShips, maxRows, maxCols, maxShips; 
         char* grid;
-        int size, maxSize;
+        Ship* ships;
     public:
         Board();
-        Board(char*, int, int);
-        Board(const Board&);
+        Board(char*, Ship*, int, int, int, int, int, int);
+        Board(const Board*);
         ~Board();
 
-        Board& operator=(const Board&);
-        friend ostream& operator<<(ostream&, Board&);
-
         char* getGrid();
-        int getSize();
-        int getMaxSize();
+        Ship* getShip();
+        int getRows();
+        int getCols();
 
-        void addGrid();
+        void setRows(int);
+        void setCols(int);
 
+        friend ostream& operator<<(ostream&, const Board&);
+        Board& operator=(const Board&);
 };
+
 #endif

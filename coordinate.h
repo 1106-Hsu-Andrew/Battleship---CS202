@@ -5,8 +5,7 @@ using namespace std;
 
 class Coordinate{
     private:
-        int x;
-        int y;
+        int startX, startY, endX, endY;
     public:
         Coordinate();
         Coordinate(int, int);
@@ -14,9 +13,15 @@ class Coordinate{
 
         friend ostream& operator<<(ostream&, const Coordinate&);
 
-        int getX();
-        int getY();
-        int setX(int);
-        int setY(int);
+        int getStartX();
+        int getStartY();
+        int getEndX();
+        int getEndY();
+
+        void setStartX(int);
+        void setStartY(int);
+        void setEndX(int);
+        void setEndY(int);
 };
+
 #endif

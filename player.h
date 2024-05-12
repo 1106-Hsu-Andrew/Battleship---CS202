@@ -1,27 +1,27 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "board.h"
-#include "ship.h"
 
 class Player{
     private:
         string name;
+        Board* board;
         Ship* ships;
-        int numShips;
+
+        void randomizeShips() = 0;
     public:
         Player();
-        Player(string, Ship*, int);
+        Player(string);
         Player(const Player&);
+        ~Player();
 
-        friend ostream& operator<<(ostream&, Player&);
+        Player& operator=(const Player&);
+        friend ostream& operator<<(ostream&, const Player&);
 
-        string getName();
-        Ship* getShip();
-        int getNumShips();
+        string getName() const;
+        Ship* getShips() const;
 
-        void setName(string);
-        void setNumShips(int);
-
-
+        void setName(const string);
 };
+
 #endif

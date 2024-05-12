@@ -1,35 +1,56 @@
 #include "coordinate.h"
 Coordinate::Coordinate(){
-    x = -1;
-    y = -1;
+    startX = -1;
+    startY = -1;
+    endX = -1;
+    endY = -1;
 }
 
-Coordinate::Coordinate(int xs, int ys){
-    x = xs;
-    y = ys;
+Coordinate::Coordinate(int sX, int sY){
+    startX = sX;
+    startY = sY;
 }
 
 Coordinate::Coordinate(const Coordinate& rhs){
-    x = rhs.x;
-    y = rhs.y;
+    startX = rhs.startX;
+    startY = rhs.startY;
+    endX = rhs.endX;
+    endY = rhs.endY;
 }
 
-ostream& operator<<(ostream& o , const Coordinate& rhs){
-    o << rhs.x << rhs.y << endl;
+ostream& operator<<(ostream& o, const Coordinate& rhs){
+    o << "Coordinate: (" << rhs.startX << ", "  << rhs.startY << ")" << endl;
+    return o;
 }
 
-int Coordinate::getX(){
-    return x;
+int Coordinate::getStartX(){
+    return startX;
 }
 
-int Coordinate::getY(){
-    return y;
+int Coordinate::getStartY(){
+    return startY;
 }
 
-int Coordinate::setX(int xs){
-    x = xs;
+int Coordinate::getEndX(){
+    return endX;
 }
 
-int Coordinate::setY(int ys){
-    y = ys;
+int Coordinate::getEndY(){
+    return endY;
+}
+
+void Coordinate::setStartX(int sX){
+    startX = sX;
+}
+
+void Coordinate::setStartY(int sY){
+    startY = sY;
+}
+
+void Coordinate::setEndX(int eX){
+    endX = eX;
+}
+
+void Coordinate::setEndY(int eY){
+    endY = eY;
 }
