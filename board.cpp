@@ -27,14 +27,14 @@ Board::Board(const Board& rhs){
     maxRows = rhs.maxRows;
     maxCols = rhs.maxCols;
     maxShips = rhs.maxShips;
-    grid = new char[maxRows * maxCols];
-    ships = new Ship[maxShips];
-    for(int i = 0; i < numRows; i++){
-        for(int j = 0; j < numCols; j++){
+    grid = new char[rhs.maxRows * rhs.maxCols];
+    ships = new Ship[rhs.maxShips];
+    for(int i = 0; i < rhs.numRows; i++){
+        for(int j = 0; j < rhs.numCols; j++){
             grid[i * j] = rhs.grid[i * j];
         }
     }
-    for(int k = 0; k < numShips; k++){
+    for(int k = 0; k < rhs.numShips; k++){
         ships[k] = rhs.ships[k];
     }
 }
@@ -46,16 +46,6 @@ Board::~Board(){
 
 char* Board::getGrid(){
     return grid;
-}
-
-ostream& operator<<(ostream& o , const Board& rhs){
-    for(int i = 0; i < rhs.numRows; i++){
-        for(int j = 0; j < rhs.numCols; j++){
-            o << rhs.grid[i * j];
-        }
-        o << endl;
-    }
-    return o;
 }
 
 Board& Board::operator=(const Board& rhs){

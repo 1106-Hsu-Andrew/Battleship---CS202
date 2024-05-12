@@ -10,7 +10,7 @@ class Board{
     public:
         Board();
         Board(char*);
-        Board(const Board*);
+        Board(const Board&);
         ~Board();
 
         char* getGrid();

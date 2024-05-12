@@ -3,9 +3,9 @@
 #include "player.h"
 
 class AI: public Player{
-    public;
+    public:
         AI();
-        AI(name, Board*, Ship*);
+        AI(string, Board*, Ship*);
         AI(const AI&);
 
         void randomizeShips();

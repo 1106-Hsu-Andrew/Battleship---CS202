@@ -4,18 +4,16 @@
 
 class Game{
     private:
-        Player* players;
         int currentPlayerIndex, numTurns, numPlayers, maxPlayers;
     public:
         Game();
-        Game(Player*, int, int, int, int);
-        Game(const Player&);
+        Game(int, int, int, int);
+        Game(const Game&);
         ~Game();
 
         friend ostream& operator<<(ostream&, const Game&);
         Game& operator=(const Game&);
 
-        Player* getPlayers();
         int getCurrentPlayerIndex();
         int getNumTurns();
         int getNumPlayers();

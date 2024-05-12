@@ -76,7 +76,7 @@ Coordinate Ship::getEnd(){
     return end;
 }
 
-int Ship::getLengths(){
+int Ship::getLength(){
     return length;
 }
 

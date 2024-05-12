@@ -8,7 +8,7 @@ class Player{
         Board* board;
         Ship* ships;
 
-        void randomizeShips() = 0;
+        virtual void randomizeShips() = 0;
     public:
         Player();
         Player(string);

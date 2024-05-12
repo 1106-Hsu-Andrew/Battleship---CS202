@@ -23,7 +23,7 @@ class Ship{
         char getOrientation();
         Coordinate getStart();
         Coordinate getEnd();
-        int getLengths();
+        int getLength();
         int getHits();
         bool getIsSunk();
         Ship* getShipType();
