@@ -4,17 +4,15 @@
 
 class Board{
     private:
-        int numRows, numCols, numShips, maxRows, maxCols, maxShips; 
-        char* grid;
-        Ship* ships;
+        int numRows, numCols, maxRows, maxCols; 
+        char** grid;
     public:
         Board();
-        Board(char*);
+        Board(char**, int, int, int, int);
         Board(const Board&);
         ~Board();
 
-        char* getGrid();
-        Ship* getShip();
+        char** getGrid();
         int getRows();
         int getCols();
 

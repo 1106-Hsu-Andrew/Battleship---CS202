@@ -2,17 +2,17 @@
 Board::Board(){
     numRows = -1;
     numCols = -1;
-    numShips = -1;
     maxRows = 10;
     maxCols = 10;
-    maxShips = 10;
-    grid = new char[maxRows * maxCols];
-    ships = new Ship[maxShips];
+    grid = new char*[maxRows * maxCols];
 }
 
-Board::Board(char* g){
-    grid = new char[maxRows * maxCols];
-    ships = new Ship[maxShips];
+Board::Board(char** g, int nR, int nC, int mR, int mC){
+    numRows = nR;
+    numCols = nC;
+    maxRows = mR;
+    maxCols = mC;
+    grid = new char*[maxRows * maxCols];
     for(int i = 0; i < numRows; i++){
         for(int j = 0; j < numCols; j++){
             grid[i * j] = g[i * j];
@@ -23,48 +23,34 @@ Board::Board(char* g){
 Board::Board(const Board& rhs){
     numRows = rhs.numRows;
     numCols = rhs.numCols;
-    numShips = rhs.numShips;
     maxRows = rhs.maxRows;
     maxCols = rhs.maxCols;
-    maxShips = rhs.maxShips;
-    grid = new char[rhs.maxRows * rhs.maxCols];
-    ships = new Ship[rhs.maxShips];
+    grid = new char*[rhs.maxRows * rhs.maxCols];
     for(int i = 0; i < rhs.numRows; i++){
         for(int j = 0; j < rhs.numCols; j++){
             grid[i * j] = rhs.grid[i * j];
         }
     }
-    for(int k = 0; k < rhs.numShips; k++){
-        ships[k] = rhs.ships[k];
-    }
 }
 
 Board::~Board(){
     delete[] grid;
-    delete[] ships;
 }
 
-char* Board::getGrid(){
+char** Board::getGrid(){
     return grid;
 }
 
 Board& Board::operator=(const Board& rhs){
     numRows = rhs.numRows;
     numCols = rhs.numCols;
-    numShips = rhs.numShips;
     maxRows = rhs.maxRows;
     maxCols = rhs.maxCols;
-    maxShips = rhs.maxShips;
-    grid = new char[maxRows * maxCols];
-    ships = new Ship[maxShips];
+    grid = new char*[maxRows * maxCols];
     for(int i = 0; i < numRows; i++){
         for(int j = 0; j < numCols; j++){
             grid[i * j] = rhs.grid[i * j];
         }
     }
-    for(int k = 0; k < numShips; k++){
-        ships[k] = rhs.ships[k];
-    }
     return *this;
-
 }
