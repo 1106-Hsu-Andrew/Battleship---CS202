@@ -1,5 +1,4 @@
 #include "players.h"
-
 void placeAttack();
 bool checkHit();
 bool addGrid(Ship);
