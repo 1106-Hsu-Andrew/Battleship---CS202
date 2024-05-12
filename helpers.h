@@ -8,4 +8,5 @@ bool checkSunk();
 void updateBoard();
 bool checkCollision();
 int playGame();
+void displayBoard(Board);
 void clearBoard(Board);
