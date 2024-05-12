@@ -7,8 +7,12 @@ int main(){
         grid[i] = new char[10];
     }
     Board gameBoard(grid, 10, 10, 10, 10);
-    //displayBoard(gameBoard);
+    Board attackBoard(grid, 10, 10, 10, 10);
+    cout << "         ====ATTACK BOARD====" << endl;
+    cout << attackBoard;
+    cout << "         ====GAME BOARD====" << endl;
     cout << gameBoard;
+
 }
 ostream& operator<<(ostream& o, const Board& rhs){
     for(int k = 0; k < 9; k++){
