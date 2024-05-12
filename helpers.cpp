@@ -20,7 +20,11 @@ bool checkWin(){
 }
 
 bool checkSunk(){
-
+    if(hits >= shipType.getLength()){
+        return 1; 
+    }else{
+        return 0;
+    }
 }
 
 void updateBoard(){
