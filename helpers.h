@@ -1,7 +1,7 @@
 #include "players.h"
 void placeAttack();
 bool checkHit();
-bool addGrid(Ship);
+bool addGrid(Ship&, Board&);
 bool removeGrid(Coordinate);
 bool checkWin();
 bool checkSunk();

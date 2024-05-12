@@ -8,7 +8,7 @@ class Coordinate{
         int startX, startY, endX, endY;
     public:
         Coordinate();
-        Coordinate(int, int, int, int);
+        Coordinate(int, int);
         Coordinate(const Coordinate&);
 
         friend ostream& operator<<(ostream&, const Coordinate&);

@@ -2,14 +2,6 @@
 Player::Player(){
     name = "NA";
     numShips = -1;
-    // numShips = -1;
-    // maxShips = 5;
-    // sizeCols = -1;
-    // maxSizeCols = 10;
-    // sizeRows = -1;
-    // maxSizeRows = 10;
-    // board = new Board[maxSizeCols * maxSizeRows];
-    // ships = new Ship[maxShips];
 }
 
 Player::Player(string n, int nS){

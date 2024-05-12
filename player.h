@@ -7,6 +7,8 @@ class Player{
         string name;
         Board* board;
         Ship* ships;
+
+        void randomizeShips() = 0;
     public:
         Player();
         Player(string);
