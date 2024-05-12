@@ -12,9 +12,9 @@ class Board{
         Board(const Board&);
         ~Board();
 
-        char** getGrid();
-        int getRows();
-        int getCols();
+        char** getGrid() const;
+        int getRows() const;
+        int getCols() const;
 
         void setRows(int);
         void setCols(int);

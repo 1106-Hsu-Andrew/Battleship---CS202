@@ -37,9 +37,26 @@ Board::~Board(){
     delete[] grid;
 }
 
-char** Board::getGrid(){
+char** Board::getGrid() const{
     return grid;
 }
+
+int Board::getRows() const{
+    return numRows;
+}
+
+int Board::getCols() const{
+    return numCols;
+}
+
+void Board::setRows(int r){
+    numRows = r;
+}
+
+void Board::setCols(int c){
+    numCols = c;
+}
+
 
 Board& Board::operator=(const Board& rhs){
     numRows = rhs.numRows;
