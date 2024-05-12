@@ -21,10 +21,6 @@ class Board{
         void setRows(int);
         void setCols(int);
 
-        void addGrid(Ship);
-        void removeGrid(Coordinate);
-
-
         friend ostream& operator<<(ostream&, const Board&);
         Board& operator=(const Board&);
 };

@@ -1,4 +1,11 @@
-#ifndef HELPERS_H
-#define HELPERS_H
+#include "players.h"
 
-#endif
+void placeAttack();
+bool checkHit();
+bool addGrid(Ship);
+bool removeGrid(Coordinate);
+bool checkWin();
+bool checkSunk();
+void updateBoard();
+bool checkCollision();
+int playGame();
