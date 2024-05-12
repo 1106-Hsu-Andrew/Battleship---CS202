@@ -12,7 +12,7 @@ class Game{
         Game(const Player&);
         ~Game();
 
-        friend ostream& operator<<(ostream&, const Player&);
+        friend ostream& operator<<(ostream&, const Game&);
         Game& operator=(const Game&);
 
         Player* getPlayers();

@@ -1,8 +1,8 @@
-#include "helper.h"
+#include "helpers.h"
 void placeAttack(){
+    int x, y;
+    Coordinate attackLocation = Coordinate();
     do{
-        int x, y
-        attackLocation = Coordinate();
         cout << "Enter a coordinate to place an attack with the x and y values separated by a space: " << endl;
         cin >> x;
         cin >> y; 
@@ -16,9 +16,9 @@ bool checkHit(){
 }
 
 bool addGrid(Ship s, Board b){
+    int x, y;
+    Coordinate shipLocation = Coordinate();
     do{
-        int x, y
-        shipLocation = Coordinate();
         cout << "Enter a coordinate to place your ship with the x and y values separated by a space: " << endl;
         cin >> x;
         cin >> y;
@@ -59,5 +59,22 @@ bool checkCollision(){
 }
 
 int playGame(){
+
+}
+
+void showBoard(char* board[]){
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            cout << board[i][j] << " ";
+        }
+    }
+}
+
+void clearBoard(char* board[]){
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            board[i][j] = "";
+        }
+    }
 
 }

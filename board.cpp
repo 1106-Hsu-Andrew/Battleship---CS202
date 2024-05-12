@@ -10,13 +10,7 @@ Board::Board(){
     ships = new Ship[maxShips];
 }
 
-Board::Board(char* g, Ship* s, int nR, int nC, int nS, int mR, int mC, int mS){
-    numRows = nR;
-    numCols = nC;
-    numShips = nS;
-    maxRows = mR;
-    maxCols = mC;
-    maxShips = mS;
+Board::Board(char* g){
     grid = new char[maxRows * maxCols];
     ships = new Ship[maxShips];
     for(int i = 0; i < numRows; i++){
@@ -24,10 +18,6 @@ Board::Board(char* g, Ship* s, int nR, int nC, int nS, int mR, int mC, int mS){
             grid[i * j] = g[i * j];
         }
     }
-    for(int k = 0; k < numShips; k++){
-        ships[k] = s[k];
-    }
-    
 }
 
 Board::Board(const Board& rhs){
@@ -56,14 +46,6 @@ Board::~Board(){
 
 char* Board::getGrid(){
     return grid;
-}
-
-void Board::addGrid(Ship){
-
-}
-
-void Board::removeGrid(Coordinate){
-
 }
 
 ostream& operator<<(ostream& o , const Board& rhs){

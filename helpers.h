@@ -1,4 +1,4 @@
-#include "players.h"
+#include "player.h"
 void placeAttack();
 bool checkHit();
 bool addGrid(Ship&, Board&);
@@ -8,3 +8,4 @@ bool checkSunk();
 void updateBoard();
 bool checkCollision();
 int playGame();
+void showBoard(char*);

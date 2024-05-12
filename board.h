@@ -9,7 +9,7 @@ class Board{
         Ship* ships;
     public:
         Board();
-        Board(char*, Ship*, int, int, int, int, int, int);
+        Board(char*);
         Board(const Board*);
         ~Board();
 
