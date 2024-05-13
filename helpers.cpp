@@ -75,6 +75,25 @@ for(int i = 0; i < 10; i++){
 cout << endl;
 }
 
-void clearBoard(Board b){
+void placeShip(Ship s, Board b){
+    int x = s.getStart().getStartX();
+    int y = s.getStart().getStartY();
+    if(s.getOrientation() == 'V'){
+        for(int i = y; i < s.getLength(); i++){
+            b.getGrid()[x][i] = s.getName()[0];
+        }
+    }
+    else{
+        for(int i = x; i < s.getLength(); i++){
+            b.getGrid()[i][y] = s.getName()[0];
+        }
+    }
+}
 
+void setGrid(Board b){
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            b.getGrid()[i][j] = '-';
+        }
+    }
 }

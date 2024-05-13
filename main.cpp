@@ -9,7 +9,6 @@ int main(){
     }
     string userName;
 
-
     system("clear");
     cout << "        WELCOME TO BATTLESHIP!" << endl << endl;
     cout << "Enter your name: ";
@@ -18,10 +17,12 @@ int main(){
     system("clear");
     Board gameBoard(grid, 10, 10, 10, 10);
     Board attackBoard(grid, 10, 10, 10, 10);
-    cout << "         ====ATTACK BOARD====" << endl;
-    cout << attackBoard;
-    cout << "         ====GAME BOARD====" << endl;
-    cout << gameBoard;
+    setGrid(gameBoard);
+    setGrid(attackBoard);
+    // cout << "         ====ATTACK BOARD====" << endl;
+    // cout << attackBoard;
+    // cout << "         ====GAME BOARD====" << endl;
+    // cout << gameBoard;
 
     int cX, cY, bX, bY, dX, dY, sX, sY, pX, pY;
     char cO, bO, dO, sO, pO;
@@ -63,6 +64,10 @@ int main(){
 
     Coordinate playerPatrolBoatCoordinate = Coordinate(pX, pY);
     Ship playerPatrolBoat = Ship("Submarine", pO, playerPatrolBoatCoordinate, 2, 0, false);
+
+    placeShip(playerBattleship, gameBoard);
+
+    cout << gameBoard;
 }
 ostream& operator<<(ostream& o, const Board& rhs){
     for(int k = 0; k < 9; k++){
@@ -71,9 +76,10 @@ ostream& operator<<(ostream& o, const Board& rhs){
     o << "10|"<< endl;
     for(int i = 0; i < 10; i++){
         for(int j = 0; j < 10; j++){
-                o << "- |" << rhs.getGrid()[i][j] << " ";
+                o << " " << rhs.getGrid()[i][j] << " |";
         }
         o << i + 1 << endl;
     }
     o << endl;   
+    return o;
 }

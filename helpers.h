@@ -10,3 +10,5 @@ bool checkCollision();
 int playGame();
 void displayBoard(Board);
 void clearBoard(Board);
+void placeShip(Ship, Board);
+void setGrid(Board);
