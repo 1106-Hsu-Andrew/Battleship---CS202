@@ -1,5 +1,4 @@
 #include "ai.h"
-#include <stdlib.h>
 void AI::randomizeShips(){
     int x, y;
     Coordinate shipLocation = Coordinate();
