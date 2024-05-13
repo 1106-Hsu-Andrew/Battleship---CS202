@@ -49,6 +49,20 @@ int main(){
   
     }while((pX < 0 || pX > 10) && (pY < 0 || pY > 10) || (pO != 'V' && pO != 'H'));
 
+    Coordinate playerCarrierCoordinate = Coordinate(cX, cY);
+    Ship playerCarrier = Ship("Carrier", cO, playerCarrierCoordinate, 5, 0, false);
+
+    Coordinate playerBattleshipCoordinate = Coordinate(bX, bY);
+    Ship playerBattleship = Ship("Battleship", bO, playerBattleshipCoordinate, 4, 0, false);
+
+    Coordinate playerDestroyerCoordinate = Coordinate(dX, dY);
+    Ship playerDestroyer = Ship("Destroyer", dO, playerCarrierCoordinate, 3, 0, false);
+
+    Coordinate playerSubmarineCoordinate = Coordinate(sX, sY);
+    Ship playerSubmarine = Ship("Submarine", sO, playerSubmarineCoordinate, 3, 0, false);
+
+    Coordinate playerPatrolBoatCoordinate = Coordinate(pX, pY);
+    Ship playerPatrolBoat = Ship("Submarine", pO, playerPatrolBoatCoordinate, 2, 0, false);
 }
 ostream& operator<<(ostream& o, const Board& rhs){
     for(int k = 0; k < 9; k++){

@@ -9,15 +9,12 @@ class Ship{
         Coordinate start, end;
         int length, hits;
         bool isSunk;
-        Ship* shipType;
     public:
         Ship();
-        Ship(string, char, Coordinate, Coordinate, int, int, bool, Ship*);
+        Ship(string, char, Coordinate, int, int, bool);
         Ship(const Ship&);
-        ~Ship();
 
         friend ostream& operator<<(ostream&, const Ship&);
-        Ship& operator=(const Ship&);
 
         string getName();
         char getOrientation();
@@ -26,7 +23,6 @@ class Ship{
         int getLength();
         int getHits();
         bool getIsSunk();
-        Ship* getShipType();
 
         void setName(string);
         void setOrientation(char);
