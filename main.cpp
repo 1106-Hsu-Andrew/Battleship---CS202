@@ -57,7 +57,7 @@ int main(){
     Ship playerBattleship = Ship("Battleship", bO, playerBattleshipCoordinate, 4, 0, false);
 
     Coordinate playerDestroyerCoordinate = Coordinate(dX, dY);
-    Ship playerDestroyer = Ship("Destroyer", dO, playerCarrierCoordinate, 3, 0, false);
+    Ship playerDestroyer = Ship("Destroyer", dO, playerDestroyerCoordinate, 3, 0, false);
 
     Coordinate playerSubmarineCoordinate = Coordinate(sX, sY);
     Ship playerSubmarine = Ship("Submarine", sO, playerSubmarineCoordinate, 3, 0, false);
@@ -66,6 +66,10 @@ int main(){
     Ship playerPatrolBoat = Ship("Submarine", pO, playerPatrolBoatCoordinate, 2, 0, false);
 
     placeShip(playerBattleship, gameBoard);
+    placeShip(playerCarrier,gameBoard);
+    placeShip(playerDestroyer, gameBoard);
+    placeShip(playerPatrolBoat, gameBoard);
+    placeShip(playerSubmarine, gameBoard);
 
     cout << gameBoard;
 }
