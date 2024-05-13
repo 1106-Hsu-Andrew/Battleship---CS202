@@ -2,8 +2,6 @@
 Coordinate::Coordinate(){
     startX = -1;
     startY = -1;
-    endX = -1;
-    endY = -1;
 }
 
 Coordinate::Coordinate(int sX, int sY){
@@ -14,8 +12,6 @@ Coordinate::Coordinate(int sX, int sY){
 Coordinate::Coordinate(const Coordinate& rhs){
     startX = rhs.startX;
     startY = rhs.startY;
-    endX = rhs.endX;
-    endY = rhs.endY;
 }
 
 ostream& operator<<(ostream& o, const Coordinate& rhs){

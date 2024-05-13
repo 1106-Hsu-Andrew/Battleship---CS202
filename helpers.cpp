@@ -79,13 +79,16 @@ void placeShip(Ship s, Board b){
     int x = s.getStart().getStartX();
     int y = s.getStart().getStartY();
     if(s.getOrientation() == 'V'){
-        for(int i = y; i < s.getLength(); i++){
-            b.getGrid()[x][i] = s.getName()[0];
+        cout << "X " << x << "Y " << y << endl;
+        for(int i = x; i < s.getLength() + x; i++){
+            b.getGrid()[i - 1][y - 1] = s.getName()[0];
+            cout << "I " << i << "Y " << y << endl;
+
         }
     }
     else{
-        for(int i = x; i < s.getLength(); i++){
-            b.getGrid()[i][y] = s.getName()[0];
+        for(int i = x; i < s.getLength() + x; i++){
+            b.getGrid()[x - 1][i - 1]  = s.getName()[0];
         }
     }
 }
