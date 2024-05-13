@@ -66,6 +66,10 @@ void Ship::setStart(Coordinate s){
     start = s;
 }
 
+void Ship::setEnd(Coordinate e){
+    end = e;
+}
+
 void Ship::setLength(int l){
     length = l;
 }
