@@ -23,17 +23,25 @@ int main(){
     cout << "         ====GAME BOARD====" << endl;
     cout << gameBoard;
 
-    
-    cout << "Hello " << userName << " please choose the location of your five ships: " << endl;
+    int cX, cY, bX, bY, dX, dY, sX, sY, pX, pY;
+    char cO, bO, dO, sO, pO;
+    cout << "Hello " << userName << " please choose the location of your five ships and their orientation." << endl;
+    cout << "Type the values in this order: x, y, orientation, and separate the values by spaces. " << endl << endl;
     cout << "Carrier: ";
+    cin >> cX >> cY >> cO;
+    cout << cX << cY << cO;
     cout << endl;
     cout << "Battleship: ";
+    cin >> bX >> bY >> bO;
     cout << endl;
     cout << "Destroyer: ";
+    cin >> dX >> dY >> dO;
     cout << endl;
     cout << "Submarine: ";
+    cin >> sX >> sY >> sO;
     cout << endl;
     cout << "Patrol Boat";
+    cin >> pX >> pY >> pO;
     cout << endl;
 
 }
