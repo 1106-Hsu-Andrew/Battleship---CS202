@@ -23,16 +23,31 @@ int main(){
     cout << "         ====GAME BOARD====" << endl;
     cout << gameBoard;
 
-int cX, cY, bX, bY, dX, dY, sX, sY, pX, pY;
-char cO, bO, dO, sO, pO;
-cout << "Hello " << userName << " please choose the location of your five ships and their orientation." << endl
-    << "Type the values in this order: x, y, orientation, and separate the values by spaces. " << endl << endl
-    << "Carrier: "; cin >> cX >> cY >> cO;
-cout << "Battleship: "; cin >> bX >> bY >> bO; 
-cout << "Destroyer: "; cin >> dX >> dY >> dO; 
-cout << "Submarine: "; cin >> sX >> sY >> sO;
-cout << "Patrol Boat: "; cin >> pX >> pY >> pO; cout << endl;
+    int cX, cY, bX, bY, dX, dY, sX, sY, pX, pY;
+    char cO, bO, dO, sO, pO;
+    cout << "Hello " << userName << " please choose the location of your five ships and their orientation." << endl;
+    cout << "Type the values in this order: x, y, orientation, and separate the values by spaces. " << endl << endl;
 
+    do{
+        cout << "Carrier: "; cin >> cX >> cY >> cO;
+    }while((cX < 0 || cX > 10) || (cY < 0 || cY > 10) || (cO != 'V' && cO != 'H'));
+
+    do{
+        cout << "Battleship: "; cin >> bX >> bY >> bO; 
+    }while((bX < 0 || bX > 10) || (bY < 0 || bY > 10) || (bO != 'V' && bO != 'H'));
+
+    do{
+        cout << "Destroyer: "; cin >> dX >> dY >> dO; 
+    }while((dX < 0 || dX > 10) && (dY < 0 || dY > 10) || (dO != 'V' && dO != 'H'));
+
+    do{
+        cout << "Submarine: "; cin >> sX >> sY >> sO;
+    }while((sX < 0 || sX > 10) && (sY < 0 || sY > 10) || (sO != 'V' && sO != 'H'));
+
+    do{
+        cout << "Patrol Boat: "; cin >> pX >> pY >> pO; cout << endl;
+  
+    }while((pX < 0 || pX > 10) && (pY < 0 || pY > 10) || (pO != 'V' && pO != 'H'));
 
 }
 ostream& operator<<(ostream& o, const Board& rhs){
