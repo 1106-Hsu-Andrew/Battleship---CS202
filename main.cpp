@@ -1,8 +1,12 @@
 #include "helpers.h"
 #include "ai.h"
 #include <stdlib.h>
+#include <ctime>
 
 int main(){
+    AI ai; 
+    srand(time(nullptr));
+    
     // Initializing game board grid
     char** gameGrid = new char*[10];
     for(int i = 0; i < 10; i++){
@@ -49,6 +53,7 @@ int main(){
     displayShipPrompt(userName);
 
     boardCollision(shipArray, gameBoard);
+    displayBoard(attackBoard,gameBoard);
 
 return 0;
 }

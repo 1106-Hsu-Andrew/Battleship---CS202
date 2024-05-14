@@ -4,6 +4,8 @@
 #include "player.h"
 
 class AI: public Player{
+    Board* gameBoard;
+    Ship* ships;
     public:
         AI();
         AI(string, Board*, Ship*);
