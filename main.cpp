@@ -17,18 +17,6 @@ int main(){
     Ship Submarine = Ship();
     Ship PatrolBoat = Ship();
 
-    // Setting the names of ships and adding them into shipArray
-    Carrier.setName("Carrier");
-    Battleship.setName("Battleship");
-    Destroyer.setName("Destroyer");
-    Submarine.setName("Submarine");
-    PatrolBoat.setName("Patrol Boat");
-
-    shipArray[0] = Carrier;
-    shipArray[1] = Battleship;
-    shipArray[2] = Destroyer;
-    shipArray[3] = Submarine;
-    shipArray[4] = PatrolBoat;
 
     // Initializing board object and setting the board
     Board gameBoard(grid, 10, 10, 10, 10);
@@ -38,6 +26,7 @@ int main(){
     setGrid(attackBoard);
 
     // Welcome and prompting for name and attributes of ship
+    string userName;
     userName = displayWelcome();
     system("clear");
     displayBoard(attackBoard, gameBoard);
@@ -45,16 +34,17 @@ int main(){
 
     int x, y;
     char orientation;
-    string userName;
 
     // Getting the x, y, and orientation of each ships
     for(int i = 0; i < 5; i++){
         do{
             cout << shipArray[i].getName() << ": ";
             cin >> x >> y >> orientation;
-            shipArray[i].setStart().setStartX(x);
-            shipArray[i].setStart().setStartY(y);
+            shipArray[i].getStart().setStartX(x);
+            shipArray[i].getStart().setStartY(y);
             shipArray[i].setOrientation(orientation);
-        }while((x < 0 || x > 10) || (y < 0 || y > 10) || (orientation != 'V' && orientation != 'H'));
+            placeShip(shipArray[i], gameBoard);
+            cout << gameBoard;
+        }while((x < 0 || x > 10) || (y < 0 || y > 10) || (orientation != 'V' && orientation != 'H') || !checkCollision(gameBoard, shipArray[i]));
     }
 }
