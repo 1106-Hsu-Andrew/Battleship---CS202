@@ -1,4 +1,5 @@
 #include "player.h"
+
 void placeAttack();
 bool checkHit();
 bool addGrid(Ship&, Board&);
@@ -8,6 +9,7 @@ bool checkSunk();
 void updateBoard();
 bool checkCollision(Board, Ship);
 bool boardCollision(Ship[], Board&);
+void randomizeShips(Board&);
 int playGame();
 void displayBoard(Board, Board);
 void clearBoard(Board);

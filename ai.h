@@ -2,7 +2,6 @@
 #define AI_H
 #include <stdlib.h>
 #include "player.h"
-
 class AI: public Player{
     Board* gameBoard;
     Ship* ships;
@@ -10,8 +9,6 @@ class AI: public Player{
         AI();
         AI(string, Board*, Ship*);
         AI(const AI&);
-
-        void randomizeShips();
 };
 
 #endif

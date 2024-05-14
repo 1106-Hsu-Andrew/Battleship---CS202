@@ -1,13 +1,10 @@
 #include "helpers.h"
 #include "ai.h"
 #include <stdlib.h>
-#include <ctime>
-
 int main(){
-    AI ai; 
     srand(time(nullptr));
-    
     // Initializing game board grid
+
     char** gameGrid = new char*[10];
     for(int i = 0; i < 10; i++){
         gameGrid[i] = new char[10];
@@ -18,7 +15,6 @@ int main(){
     for(int i = 0; i < 10; i++){
         attackGrid[i] = new char[10];
     }
-
     // Initializing ships directly in the shipArray
     Ship shipArray[5];
 
@@ -53,6 +49,7 @@ int main(){
     displayShipPrompt(userName);
 
     boardCollision(shipArray, gameBoard);
+    randomizeShips(attackBoard);
     displayBoard(attackBoard,gameBoard);
 
 return 0;
