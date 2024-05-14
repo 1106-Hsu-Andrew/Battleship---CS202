@@ -17,3 +17,5 @@ void placeShip(Ship, Board);
 void setGrid(Board);
 string displayWelcome();
 void displayShipPrompt(string);
+void placeAttack(Board&);
+bool checkHit(const Board&, int , int);

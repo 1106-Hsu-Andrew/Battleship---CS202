@@ -220,3 +220,38 @@ ostream& operator<<(ostream& o, const Board& rhs){
     o << endl;   
     return o;
 }
+void placeAttack(Board& opponentBoard) {
+    int x, y;
+    cout << "Enter the coordinates to place your attack (x and y separated by a space): ";
+    cin >> x >> y;
+
+    // Check if the coordinates are valid
+    if (x < 1 || x > 10 || y < 1 || y > 10) {
+        cout << "Invalid coordinates. Please enter coordinates between 1 and 10." << endl;
+        return;
+    }
+
+    // Convert to zero-based indexing
+    x--; 
+    y--;
+
+    // Check if the attack location has already been attacked
+    if (opponentBoard.getGrid()[x][y] != '-') {
+        cout << "You have already attacked this location. Please choose another one." << endl;
+        return;
+    }
+
+    // Mark the attack on the opponent's board
+    if (opponentBoard.getGrid()[x][y] == '-') {
+        opponentBoard.getGrid()[x][y] = 'X'; // 'X' represents a hit
+        cout << "Hit!" << endl;
+    } else {
+        opponentBoard.getGrid()[x][y] = 'O'; // 'O' represents a miss
+        cout << "Miss!" << endl;
+    }
+}
+
+bool checkHit(const Board& opponentBoard, int x, int y) {
+    // Check if the coordinates represent a hit
+    return opponentBoard.getGrid()[x][y] == 'X';
+}
