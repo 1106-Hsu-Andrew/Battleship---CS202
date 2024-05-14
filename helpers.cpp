@@ -54,19 +54,21 @@ void updateBoard(){
 }
 
 bool checkCollision(Board b, Ship s){
-    int x = s.getStart().getStartX();
-    int y = s.getStart().getStartY();
+    int startX = s.getStart().getStartX();
+    int startY = s.getStart().getStartY();
+
     if(s.getOrientation() == 'V'){
-        for(int i = x; i < s.getLength() + x; i++){
-            b.getGrid()[i - 1][y - 1] != ' - ';
+        for(int i = startX; i < startX + s.getLength(); i++){
+            if(b.getGrid()[i - 1][startY - 1] != '-'){
+                return true;
+            }
         }
-        return true;
-    }
-    else{
-        for(int i = x; i < s.getLength() + x; i++){
-            b.getGrid()[x - 1][i - 1]  != ' - ';
+    } else {
+        for(int i = startY; i < startY + s.getLength(); i++){
+            if(b.getGrid()[startX - 1][i - 1] != '-'){
+                return true;
+            }
         }
-        return true;
     }
     return false;
 }

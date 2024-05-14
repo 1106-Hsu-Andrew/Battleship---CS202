@@ -3,51 +3,45 @@
 #include <stdlib.h>
 
 int main(){
-    // Initializing of grid and ships
-    char** grid = new char*[10];
+    // Initializing game board grid
+    char** gameGrid = new char*[10];
     for(int i = 0; i < 10; i++){
-        grid[i] = new char[10];
+        gameGrid[i] = new char[10];
     }
 
-    Ship* shipArray = new Ship[5];
-
-    Ship Carrier = Ship();
-    Ship Battleship = Ship();
-    Ship Destroyer = Ship();
-    Ship Submarine = Ship();
-    Ship PatrolBoat = Ship();
-
-    Carrier.setName("Carrier");
-    Battleship.setName("Battleship");
-    Destroyer.setName("Destroyer");
-    Submarine.setName("Submarine");
-    PatrolBoat.setName("Patrol Boat");
-
-    Carrier.setLength(5);
-    Battleship.setLength(4);
-    Destroyer.setLength(3);
-    Submarine.setLength(3);
-    PatrolBoat.setLength(2);
-
-    for(int i = 0; i < 5; i++){
-        shipArray[i].setHits(0);
-        shipArray[i].setIsSunk(1);
+    // Initializing attack board grid
+    char** attackGrid = new char*[10];
+    for(int i = 0; i < 10; i++){
+        attackGrid[i] = new char[10];
     }
 
-    shipArray[0] = Carrier;
-    shipArray[1] = Battleship;
-    shipArray[2] = Destroyer;
-    shipArray[3] = Submarine;
-    shipArray[4] = PatrolBoat;
-    
-    // Initializing board object and setting the board
-    Board gameBoard(grid, 10, 10, 10, 10);
-    Board attackBoard(grid, 10, 10, 10, 10);
+    // Initializing ships directly in the shipArray
+    Ship shipArray[5];
 
+    shipArray[0].setName("Carrier");
+    shipArray[0].setLength(5);
+
+    shipArray[1].setName("Battleship");
+    shipArray[1].setLength(4);
+
+    shipArray[2].setName("Destroyer");
+    shipArray[2].setLength(3);
+
+    shipArray[3].setName("Submarine");
+    shipArray[3].setLength(3);
+
+    shipArray[4].setName("Patrol Boat");
+    shipArray[4].setLength(2);
+
+    // Initializing game board and attack board objects
+    Board gameBoard(gameGrid, 10, 10, 10, 10);
+    Board attackBoard(attackGrid, 10, 10, 10, 10);
+
+    // Setting grids for game board and attack board
     setGrid(gameBoard);
     setGrid(attackBoard);
 
-    // Welcome and prompting for name and attributes of ship
+    // Welcome and prompting for name and attributes of ships
     string userName;
     userName = displayWelcome();
     system("clear");
@@ -57,19 +51,30 @@ int main(){
     int x, y;
     char orientation;
     Coordinate location = Coordinate();
-    // Getting the x, y, and orientation of each ships
+
+    // Getting the x, y, and orientation of each ship
     for(int i = 0; i < 5; i++){
-        do{
-            cout << shipArray[i].getName() << ": ";
-            cin >> x >> y >> orientation;
+    do {
+        // Prompt for ship placement
+        cout << shipArray[i].getName() << ": ";
+        cin >> x >> y >> orientation;
 
-            location.setStartX(x);
-            location.setStartY(y);
+        // Set start location and orientation for the ship
+        location.setStartX(x);
+        location.setStartY(y);
 
-            shipArray[i].setStart(location);
-            shipArray[i].setOrientation(orientation);
-            placeShip(shipArray[i], gameBoard);
-            cout << gameBoard;
-        }while((x < 0 || x > 10) || (y < 0 || y > 10) || (orientation != 'V' && orientation != 'H') || !checkCollision(gameBoard, shipArray[i]));
-    }
+        shipArray[i].setStart(location);
+        shipArray[i].setOrientation(orientation);
+
+        // Check for collision
+        if(checkCollision(gameBoard, shipArray[i])){
+            cout << "Collision detected! Please choose a different location." << endl;
+        }
+    } while(checkCollision(gameBoard, shipArray[i])); // Repeat if there's a collision
+
+    // Place the ship on the game board
+    placeShip(shipArray[i], gameBoard);
+    cout << gameBoard;
+}
+return 0;
 }
