@@ -17,7 +17,29 @@ int main(){
     Ship Submarine = Ship();
     Ship PatrolBoat = Ship();
 
+    Carrier.setName("Carrier");
+    Battleship.setName("Battleship");
+    Destroyer.setName("Destroyer");
+    Submarine.setName("Submarine");
+    PatrolBoat.setName("Patrol Boat");
 
+    Carrier.setLength(5);
+    Battleship.setLength(4);
+    Destroyer.setLength(3);
+    Submarine.setLength(3);
+    PatrolBoat.setLength(2);
+
+    for(int i = 0; i < 5; i++){
+        shipArray[i].setHits(0);
+        shipArray[i].setIsSunk(1);
+    }
+
+    shipArray[0] = Carrier;
+    shipArray[1] = Battleship;
+    shipArray[2] = Destroyer;
+    shipArray[3] = Submarine;
+    shipArray[4] = PatrolBoat;
+    
     // Initializing board object and setting the board
     Board gameBoard(grid, 10, 10, 10, 10);
     Board attackBoard(grid, 10, 10, 10, 10);
@@ -34,14 +56,17 @@ int main(){
 
     int x, y;
     char orientation;
-
+    Coordinate location = Coordinate();
     // Getting the x, y, and orientation of each ships
     for(int i = 0; i < 5; i++){
         do{
             cout << shipArray[i].getName() << ": ";
             cin >> x >> y >> orientation;
-            shipArray[i].getStart().setStartX(x);
-            shipArray[i].getStart().setStartY(y);
+
+            location.setStartX(x);
+            location.setStartY(y);
+
+            shipArray[i].setStart(location);
             shipArray[i].setOrientation(orientation);
             placeShip(shipArray[i], gameBoard);
             cout << gameBoard;
