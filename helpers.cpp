@@ -53,26 +53,21 @@ void updateBoard(){
 
 }
 
-bool checkCollision(){
-
+bool checkCollision(Board b, Ship s){
+    if(s.getStart().getStartX()){
+        
+    }
 }
 
 int playGame(){
 
 }
 
-void displayBoard(Board b){
-for(int k = 0; k < 9; k++){
-    cout << k + 1 << " | ";
-}
-cout << "10|"<< endl;
-for(int i = 0; i < 10; i++){
-    for(int j = 0; j < 10; j++){
-            cout << "- |" << b.getGrid()[i][j] << " ";
-    }
-    cout << i + 1 << endl;
-}
-cout << endl;
+void displayBoard(Board aB, Board gB){
+    cout << "         ====ATTACK BOARD====" << endl;
+    cout << aB;
+    cout << "         ====GAME BOARD====" << endl;
+    cout << gB;
 }
 
 void placeShip(Ship s, Board b){
@@ -99,4 +94,35 @@ void setGrid(Board b){
             b.getGrid()[i][j] = '-';
         }
     }
+}
+
+string displayWelcome(){   
+    string userName;
+
+    system("clear");
+    cout << "        WELCOME TO BATTLESHIP!" << endl << endl;
+    cout << "Enter your name: ";
+    cin >> userName;
+
+    return userName;
+}
+
+void displayShipPrompt(string n){
+    cout << "Hello " << n << " please choose the location of your five ships and their orientation." << endl;
+    cout << "Type the values in this order: x, y, orientation, and separate the values by spaces. " << endl << endl;
+}
+
+ostream& operator<<(ostream& o, const Board& rhs){
+    for(int k = 0; k < 9; k++){
+    o << k + 1 << " | ";
+    }
+    o << "10|"<< endl;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+                o << " " << rhs.getGrid()[i][j] << " |";
+        }
+        o << i + 1 << endl;
+    }
+    o << endl;   
+    return o;
 }
