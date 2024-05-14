@@ -102,29 +102,48 @@ bool boardCollision(Ship shipArray[], Board& gameBoard){
     cout << gameBoard;
 }
 }
+
+// Function to randomly place ships on the game board
 void randomizeShips(Board& gameBoard) {
-        Ship AshipArray[5];
+    srand(time(NULL)); // Seed the random number generator
 
-        AshipArray[0].setName("Carrier");
-        AshipArray[0].setLength(5);
+    Ship AshipArray[5];
 
-        AshipArray[1].setName("Battleship");
-        AshipArray[1].setLength(4);
+    // Define ships and their lengths
+    AshipArray[0].setName("Carrier");
+    AshipArray[0].setLength(5);
 
-        AshipArray[2].setName("Destroyer");
-        AshipArray[2].setLength(3);
+    AshipArray[1].setName("Battleship");
+    AshipArray[1].setLength(4);
 
-        AshipArray[3].setName("Submarine");
-        AshipArray[3].setLength(3);
+    AshipArray[2].setName("Destroyer");
+    AshipArray[2].setLength(3);
 
-        AshipArray[4].setName("Patrol Boat");
-        AshipArray[4].setLength(2);
+    AshipArray[3].setName("Submarine");
+    AshipArray[3].setLength(3);
 
-        for (int i = 0; i < 5; i++) {
-            int x, y;
-            char orientation = rand() % 2 == 0 ? 'H' : 'V'; // randomly choose horizontal or vertical
+    AshipArray[4].setName("Patrol Boat");
+    AshipArray[4].setLength(2);
 
-            // Randomly generate starting coordinates
+    for (int i = 0; i < 5; i++) {
+        int x, y;
+        char orientation = rand() % 2 == 0 ? 'H' : 'V'; // randomly choose horizontal or vertical
+
+        // Randomly generate starting coordinates within the boundaries
+        if (orientation == 'H') {
+            x = rand() % (10 - AshipArray[i].getLength() + 1);
+            y = rand() % 10;
+        } else {
+            x = rand() % 10;
+            y = rand() % (10 - AshipArray[i].getLength() + 1);
+        }
+
+        AshipArray[i].setStart(Coordinate(x, y));
+        AshipArray[i].setOrientation(orientation);
+
+        // Check for collision and generate new coordinates if needed
+        while (checkCollision(gameBoard, AshipArray[i])) {
+            // If there's a collision, generate new starting coordinates
             if (orientation == 'H') {
                 x = rand() % (10 - AshipArray[i].getLength() + 1);
                 y = rand() % 10;
@@ -132,27 +151,13 @@ void randomizeShips(Board& gameBoard) {
                 x = rand() % 10;
                 y = rand() % (10 - AshipArray[i].getLength() + 1);
             }
-
             AshipArray[i].setStart(Coordinate(x, y));
-            AshipArray[i].setOrientation(orientation);
-
-            // Check for collision
-            while (checkCollision(gameBoard, AshipArray[i])) {
-                // If there's a collision, generate new starting coordinates
-                if (orientation == 'H') {
-                    x = rand() % (10 - AshipArray[i].getLength() + 1);
-                    y = rand() % 10;
-                } else {
-                    x = rand() % 10;
-                    y = rand() % (10 - AshipArray[i].getLength() + 1);
-                }
-                AshipArray[i].setStart(Coordinate(x, y));
-            }
-
-            // Place the ship on the game board
-            placeShip(AshipArray[i], gameBoard);
         }
+
+        // Place the ship on the game board
+        placeShip(AshipArray[i], gameBoard);
     }
+}
 
 
 int playGame(){
@@ -190,7 +195,7 @@ void setGrid(Board b){
     }
 }
 
-string displayWelcome(){   
+string displayWelcome(){
     string userName;
 
     system("clear");
@@ -220,6 +225,7 @@ ostream& operator<<(ostream& o, const Board& rhs){
     o << endl;   
     return o;
 }
+/*
 void placeAttack(Board& opponentBoard) {
     int x, y;
     cout << "Enter the coordinates to place your attack (x and y separated by a space): ";
@@ -255,3 +261,4 @@ bool checkHit(const Board& opponentBoard, int x, int y) {
     // Check if the coordinates represent a hit
     return opponentBoard.getGrid()[x][y] == 'X';
 }
+*/

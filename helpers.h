@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "ai.h"
 void placeAttack();
 bool checkHit();
 bool addGrid(Ship&, Board&);
