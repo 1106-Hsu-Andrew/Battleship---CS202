@@ -7,6 +7,7 @@ bool checkWin();
 bool checkSunk();
 void updateBoard();
 bool checkCollision(Board, Ship);
+bool boardCollision(Ship[], Board&);
 int playGame();
 void displayBoard(Board, Board);
 void clearBoard(Board);

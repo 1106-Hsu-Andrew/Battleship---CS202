@@ -72,6 +72,36 @@ bool checkCollision(Board b, Ship s){
     }
     return false;
 }
+bool boardCollision(Ship shipArray[], Board& gameBoard){
+    int x, y;
+    char orientation;
+    Coordinate location = Coordinate();
+
+    // Getting the x, y, and orientation of each ship
+    for(int i = 0; i < 5; i++){
+    do {
+        // Prompt for ship placement
+        cout << shipArray[i].getName() << ": ";
+        cin >> x >> y >> orientation;
+
+        // Set start location and orientation for the ship
+        location.setStartX(x);
+        location.setStartY(y);
+
+        shipArray[i].setStart(location);
+        shipArray[i].setOrientation(orientation);
+
+        // Check for collision
+        if(checkCollision(gameBoard, shipArray[i])){
+            cout << "Collision detected! Please choose a different location." << endl;
+        }
+    } while(checkCollision(gameBoard, shipArray[i])); // Repeat if there's a collision
+
+    // Place the ship on the game board
+    placeShip(shipArray[i], gameBoard);
+    cout << gameBoard;
+}
+}
 
 int playGame(){
 
