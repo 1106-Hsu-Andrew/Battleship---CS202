@@ -16,22 +16,38 @@ int main(){
         attackGrid[i] = new char[10];
     }
     // Initializing ships directly in the shipArray
-    Ship shipArray[5];
+    Ship* shipArray = new Ship[5];
 
-    shipArray[0].setName("Carrier");
-    shipArray[0].setLength(5);
+    Ship Carrier = Ship();
+    Carrier.setName("Carrier");
+    Carrier.setLength(5);
 
-    shipArray[1].setName("Battleship");
-    shipArray[1].setLength(4);
+    Ship Battleship = Ship();
+    Battleship.setName("Battleship");
+    Battleship.setLength(4);
 
-    shipArray[2].setName("Destroyer");
-    shipArray[2].setLength(3);
+    Ship Destroyer = Ship();
+    Destroyer.setName("Destroyer");
+    Destroyer.setLength(3);
 
-    shipArray[3].setName("Submarine");
-    shipArray[3].setLength(3);
+    Ship Submarine = Ship();
+    Submarine.setName("Submarine");
+    Submarine.setLength(3);
 
-    shipArray[4].setName("Patrol Boat");
-    shipArray[4].setLength(2);
+    Ship PatrolBoat = Ship();
+    PatrolBoat.setName("Patrol Boat");
+    PatrolBoat.setLength(2);
+
+    shipArray[0] = Carrier;
+    shipArray[1] = Battleship;
+    shipArray[2] = Destroyer;
+    shipArray[3] = Submarine;
+    shipArray[4] = PatrolBoat;
+
+    for(int i = 0; i < 5; i++){
+        shipArray[i].setHits(0);
+        shipArray[i].setIsSunk(false);
+    }
 
     // Initializing game board and attack board objects
     Board gameBoard(gameGrid, 10, 10, 10, 10);
