@@ -5,7 +5,7 @@ bool addGrid(Ship&, Board&);
 bool checkSunk();
 bool checkCollision(Board, Ship);
 bool boardCollision(Ship[], Board&);
-void randomizeShips(Board&);
+void randomizeShips(Board);
 void displayBoard(Board, Board);
 void clearBoard(Board);
 void placeShip(Ship, Board);

@@ -3,17 +3,29 @@
 #include <stdlib.h>
 int main(){
     srand(time(nullptr));
+    bool winCondition = false;
     // Initializing game board grid
 
+    // Player Boards
     char** gameGrid = new char*[10];
     for(int i = 0; i < 10; i++){
         gameGrid[i] = new char[10];
     }
 
-    // Initializing attack board grid
     char** attackGrid = new char*[10];
     for(int i = 0; i < 10; i++){
         attackGrid[i] = new char[10];
+    }
+
+    // AI Boards
+    char** gameGridAI = new char*[10];
+    for(int i = 0; i < 10; i++){
+        gameGridAI[i] = new char[10];
+    }
+
+    char** attackGridAI = new char*[10];
+    for(int i = 0; i < 10; i++){
+        attackGridAI[i] = new char[10];
     }
     // Initializing ships directly in the shipArray
     Ship* shipArray = new Ship[5];
@@ -52,6 +64,8 @@ int main(){
     // Initializing game board and attack board objects
     Board gameBoard(gameGrid, 10, 10, 10, 10);
     Board attackBoard(attackGrid, 10, 10, 10, 10);
+    Board gameBoardAI(gameGridAI, 10, 10, 10, 10);
+    Board attackBoardAI(attackGridAI, 10, 10, 10, 10);
 
     // Setting grids for game board and attack board
     setGrid(gameBoard);
@@ -65,8 +79,13 @@ int main(){
     displayShipPrompt(userName);
 
     boardCollision(shipArray, gameBoard);
-    randomizeShips(attackBoard);
+
+    randomizeShips(gameBoardAI);
     displayBoard(attackBoard,gameBoard);
+
+    do{
+        placeAttack(attackBoard);
+    }while(winCondition = false);
 
 return 0;
 }

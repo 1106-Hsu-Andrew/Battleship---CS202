@@ -88,7 +88,7 @@ bool boardCollision(Ship shipArray[], Board& gameBoard){
 }
 
 // Function to randomly place ships on the game board
-void randomizeShips(Board& gameBoard) {
+void randomizeShips(Board gameBoard) {
     srand(time(NULL)); // Seed the random number generator
 
     Ship* shipArray = new Ship[5];
@@ -125,8 +125,8 @@ void randomizeShips(Board& gameBoard) {
         char orientation = rand() % 2 == 0 ? 'H' : 'V'; // randomly choose horizontal or vertical
 
         // Randomly generate starting coordinates within the boundaries
-        x = (rand() % 10) + 1;
-        y = (rand() % 10) + 1;
+        x = (rand() % 9) + 1;
+        y = (rand() % 9) + 1;
 
         shipArray[i].setStart(Coordinate(x, y));
         shipArray[i].setOrientation(orientation);
@@ -134,13 +134,8 @@ void randomizeShips(Board& gameBoard) {
         // Check for collision and generate new coordinates if needed
         while (checkCollision(gameBoard, shipArray[i])) {
             // If there's a collision, generate new starting coordinates
-            if (orientation == 'H') {
-                x = rand() % (10 - shipArray[i].getLength() + 1);
-                y = rand() % 10;
-            } else {
-                x = rand() % 10;
-                y = rand() % (10 - shipArray[i].getLength() + 1);
-            }
+            x = (rand() % 9) + 1;
+            y = (rand() % 9) + 1;
             shipArray[i].setStart(Coordinate(x, y));
         }
 
@@ -193,7 +188,7 @@ string displayWelcome(){
 
 void displayShipPrompt(string n){
     cout << "Hello " << n << " please choose the location of your five ships and their orientation." << endl;
-    cout << "Type the values in this order: x, y, orientation, and separate the values by spaces. " << endl << endl;
+    cout << "Type the values in this order: x (1 - 10), y (1 - 10), orientation (H or V), and separate the values by spaces. " << endl << endl;
 }
 
 ostream& operator<<(ostream& o, const Board& rhs){
@@ -210,7 +205,7 @@ ostream& operator<<(ostream& o, const Board& rhs){
     o << endl;   
     return o;
 }
-/*
+
 void placeAttack(Board& opponentBoard) {
     int x, y;
     cout << "Enter the coordinates to place your attack (x and y separated by a space): ";
@@ -233,7 +228,7 @@ void placeAttack(Board& opponentBoard) {
     }
 
     // Mark the attack on the opponent's board
-    if (opponentBoard.getGrid()[x][y] == '-') {
+    if (opponentBoard.getGrid()[x][y] == 'C' || opponentBoard.getGrid()[x][y] == 'B' || opponentBoard.getGrid()[x][y] == 'D' || opponentBoard.getGrid()[x][y] == 'S' || opponentBoard.getGrid()[x][y] == 'P') {
         opponentBoard.getGrid()[x][y] = 'X'; // 'X' represents a hit
         cout << "Hit!" << endl;
     } else {
@@ -246,4 +241,4 @@ bool checkHit(const Board& opponentBoard, int x, int y) {
     // Check if the coordinates represent a hit
     return opponentBoard.getGrid()[x][y] == 'X';
 }
-*/
+
